@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+{% for message in app.flashes('success') %}
+<div class="container-md pt-2 text-left">
+      <div class="alert alert-success">
+          {{ message }}
+      </div>
+</div>
+  {% endfor %}
+{# {% if app.user %} #}
+  {# <div class="container-md p-3 text-left">
+    {{ form_start(form)}}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary btn-block mt-3">Send</button>
+  {{ form_end(form) }} #}
+  <div class="container-md p-3 text-left">  
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">
+        {% if not app.user %}<a href="/login" class="text-decoration-none">Login</a> to {% endif %}
+        Post a message</h5>
+        {{ form_start(form)}}
+        {{ form_widget(form) }}
+        <button type="submit" {% if not app.user %} disabled {% endif %} class="btn btn-primary btn-block mt-3">Submit</button>
+      {{ form_end(form) }}
+      </div>
+    </div>
+  </div>
+{# {% endif %} #}
+
+  <!-- Jumbotron -->
+<div class="container-md text-left">
+{# {% for guestbookEntry in guestbookData %} #}
+{% set i = 0 %}
+{% for  key, guestbookEntry in pagination   %}
+{% if guestbookEntry.approvalStatus %}
+<div class="card mb-3">
+  <div class="card-header"><h5>{{ guestbookEntry.user.username }}</h5>{{ guestbookEntry.createdAt | date }}</div>
+  <div class="card-body">
+    <p class="card-text">{{ guestbookEntry.comment }}</p>
+  </div>
+</div>
+{% endif %}
+{% endfor %}
+<div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+</div>
+{% endblock %}

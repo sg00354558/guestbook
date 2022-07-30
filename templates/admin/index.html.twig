@@ -1,0 +1,89 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Panel!{% endblock %}
+
+{% block body %}
+{% for message in app.flashes('success') %}
+<div class="container-md pt-2 text-left">
+      <div class="alert alert-success">
+          {{ message }}
+      </div>
+</div>
+  {% endfor %}
+  
+<div class="container">
+    <div class="count">
+      No. of guest  : <b>{{ pagination.getTotalItemCount }}</b>
+    </div>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Comment</th>
+            <th scope="col">Username</th>
+            <th scope="col">Status</th>
+            {# {% if is_granted('ROLE_ADMIN') %} #}
+            <th scope="col">Update Status</th>
+            <th scope="col">Delete</th>
+            {# {% endif %} #}
+        </tr>
+        </thead>
+        <tbody>
+        {% set i = 0   %}
+        {% for  key, guest in pagination   %}
+        {# {% for  guest in guestbookData   %} #}
+        <tr>
+
+            {# <td> {{ key+1 }}</td> #}
+            {# <td> <a href="{{ path('guestedit',{id: guest.id}) }}"> {{ guest.name }} </a></td> #}
+            <td>{{ guest.id }}</td>
+            <td class="w-50">{{ guest.comment }}</td>
+            <td>{{ guest.user.username }}</td>
+            <td>{{ guest.approvalStatus ? 'Approved' : 'Pending' }}</td>
+            {# {% if is_granted('ROLE_ADMIN') %} #}
+            <td>
+                {% if  not guest.approvalStatus  %}
+                    <a class="btn btn-success" href='/guestbook/approve/{{ guest.id }}'>Approve</a>
+                {% endif %}
+            </td>
+
+            <td>
+                {# {% if is_granted('ROLE_ADMIN') %} #}
+                <a class="btn btn-primary" href='/guestbook/edit/{{ guest.id }}'>Edit</a>
+                <a class="btn btn-danger" href='/guestbook/delete/{{ guest.id }}'>Delete</a>
+                   {# <!-- <a class="btn btn-danger" href="{{ path('guestdelete',{id: guest.id}) }}">Delete</a>--> #}
+                    {# <a href="#myModal"  data-toggle="modal" class="modalpopup" data-id="{{ guest.id}}">Delete</a> #}
+                {# {% endif %} #}
+            </td>
+            {# {% endif %} #}
+
+
+        </tr>
+       {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+
+
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header flex-column">
+                    <h4 class="modal-title w-100">Are you sure?</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>Do you really want to delete these records? This process cannot be undone.</p>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-danger" id="deletebtn">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

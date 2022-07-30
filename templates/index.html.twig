@@ -1,0 +1,76 @@
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<header>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-mdb-toggle="collapse"
+        data-mdb-target="#navbarExample01"
+        aria-controls="navbarExample01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarExample01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" aria-current="page" href="#">Guestbook</a>
+          </li>
+          <li class="nav-item my-lg-0">
+            <a class="nav-link" href="#">Login</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar -->
+
+  <!-- Jumbotron -->
+  <div class="p-5 text-left">
+    <form>
+  <!-- Name input -->
+  <div class="form-outline mb-4">
+    <input type="text" id="form4Example1" class="form-control" />
+    <label class="form-label" for="form4Example1">Name</label>
+  </div>
+
+  <!-- Email input -->
+  <div class="form-outline mb-4">
+    <input type="email" id="form4Example2" class="form-control" />
+    <label class="form-label" for="form4Example2">Email address</label>
+  </div>
+
+  <!-- Message input -->
+  <div class="form-outline mb-4">
+    <textarea class="form-control" id="form4Example3" rows="4"></textarea>
+    <label class="form-label" for="form4Example3">Message</label>
+  </div>
+
+  {# <!-- Checkbox -->
+  <div class="form-check d-flex justify-content-center mb-4">
+    <input class="form-check-input me-2" type="checkbox" value="" id="form4Example4" checked />
+    <label class="form-check-label" for="form4Example4">
+      Send me a copy of this message
+    </label>
+  </div> #}
+
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+</form>
+  </div>
+  <!-- Jumbotron -->
+</header>
+
+<div class="p-5 text-left">
+{{ form_start(form)}}
+
+{{ form_widget(form) }}
+  <!-- Submit button -->
+  <button type="submit" class="btn btn-primary btn-block mb-4">Send</button>
+{{ form_end(form) }}
+</div>
