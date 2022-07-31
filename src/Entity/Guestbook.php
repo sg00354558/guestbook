@@ -23,7 +23,8 @@ class Guestbook
 
     /**
      * @Assert\NotBlank
-     * @Assert\length(min=5)
+     * @Assert\Length(min=5)
+     * @Assert\Length(max=100)
      */
     #[ORM\Column(type: Types::TEXT)]
     private ?string $comment = null;
@@ -81,16 +82,10 @@ class Guestbook
         return $this->createdAt;
     }
 
-    // public function setCreatedAt(\DateTimeImmutable $createdAt): self
-    // {
-    //     $this->createdAt = $createdAt;
-
-    //     return $this;
-    // }
-
-    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
     {
-        $metadata->addPropertyConstraint('createdAt', new Assert\DateTime());
+        $this->createdAt = $createdAt;
+        return $this;
     }
 
      /**
