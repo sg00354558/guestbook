@@ -20,6 +20,15 @@ class GuestbookController extends AbstractController
     private $paginator;
     private $guestbookService;
 
+        
+    /**
+     * __construct
+     *
+     * @param  mixed $guestbookRepository
+     * @param  mixed $em
+     * @param  mixed $paginator
+     * @return void
+     */
     public function __construct(GuestbookRepository $guestbookRepository, EntityManagerInterface $em, PaginatorInterface $paginator, 
     GuestbookService $guestbookService){
         $this->guestbookRepository = $guestbookRepository;
@@ -28,7 +37,13 @@ class GuestbookController extends AbstractController
         $this->guestbookService = $guestbookService;
     }
 
-    #[Route('/guestbook', name: 'app_guestbook')]
+    #[Route('/guestbook', name: 'app_guestbook')]    
+    /**
+     * index Guestbook listing page
+     *
+     * @param  mixed $request
+     * @return Response
+     */
     public function index(Request $request) : Response
     {
         $guestbookData = $this->guestbookRepository->findBy(array('approvalStatus' => Guestbook::APPROVAL_STATUS),array('id' => 'Desc'));
@@ -66,7 +81,14 @@ class GuestbookController extends AbstractController
         ]);
     }
 
-    #[Route('/guestbook/create', methods:['get', 'post'], name: 'create_guestbook')]
+
+    #[Route('/guestbook/create', methods:['get', 'post'], name: 'create_guestbook')]    
+    /**
+     * create - add new guestbook entry
+     *
+     * @param  mixed $request
+     * @return Response
+     */
     public function create(Request $request) : Response
     {
         $guestbook = new Guestbook;
@@ -86,6 +108,8 @@ class GuestbookController extends AbstractController
             $this->em->flush();
 
             $this->addFlash('success', 'Entry Created Successfully');
+            return $this->redirectToRoute('app_admin');
+            
         }    
 
         return $this->render('guestbook/create.html.twig', [
@@ -95,17 +119,22 @@ class GuestbookController extends AbstractController
     }
 
     #[Route('/guestbook/delete/{id}', methods:['GET', 'DELETE'], name: 'remove_guestbook')]
-    public function delete($id) : Response 
+    public function delete(Guestbook $guestBook) : Response 
     {
-        $geustBookEntry = $this->guestbookRepository->find($id);
-        $this->guestbookRepository->remove($geustBookEntry);
-        
+        $this->em->remove($guestBook);
+        $this->em->flush();
         $this->addFlash('success', 'Entry deleted Successfully');
 
         return $this->redirectToRoute('app_admin');
     }
 
-    #[Route('/guestbook/approve/{id}', methods:['GET', 'PUT'], name: 'approve_guestbook_entry')]
+    #[Route('/guestbook/approve/{id}', methods:['GET', 'PUT'], name: 'approve_guestbook_entry')]    
+    /**
+     * approve - Set guestbook entry as approved i.e approvalStatus = 1
+     *
+     * @param  mixed $guestbook
+     * @return Response
+     */
     public function approve(Guestbook $guestbook) : Response 
     {
         $this->guestbookService->updateGuestbookStatus($guestbook);

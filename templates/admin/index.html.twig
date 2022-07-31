@@ -12,49 +12,57 @@
   {% endfor %}
   
 <div class="container" style="min-height:500px">
-    <div class="count mt-5">
-      Number of entries  : <b>{{ pagination.getTotalItemCount }}</b>
+    <div class="d-flex justify-content-between mt-3 mb-3">
+        <div>
+            Number of entries  : <b>{{ pagination.getTotalItemCount }}</b>
+        </div>
+        <div>
+            <a class="btn btn-success" href='/guestbook/create'>New</a>
+        </div>
     </div>
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Comment</th>
-            <th scope="col">Username</th>
-            <th scope="col">Status</th>
-            {# {% if is_granted('ROLE_ADMIN') %} #}
-            <th scope="col">Update Status</th>
-            <th scope="col">Delete</th>
-            {# {% endif %} #}
-        </tr>
-        </thead>
-        <tbody>
-        {% set i = 0   %}
-        {% for  key, guest in pagination   %}
-        {# {% for  guest in guestbookData   %} #}
-        <tr>
+    <hr class="bg-danger border-2 border-top border-success">
+    <div>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Comment</th>
+                <th scope="col">Username</th>
+                <th scope="col">Status</th>
+                {# {% if is_granted('ROLE_ADMIN') %} #}
+                <th scope="col">Update Status</th>
+                <th scope="col">Delete</th>
+                {# {% endif %} #}
+            </tr>
+            </thead>
+            <tbody>
+            {% set i = 0   %}
+            {% for  key, guest in pagination   %}
+            {# {% for  guest in guestbookData   %} #}
+            <tr>
 
-            {# <td> {{ key+1 }}</td> #}
-            {# <td> <a href="{{ path('guestedit',{id: guest.id}) }}"> {{ guest.name }} </a></td> #}
-            <td>{{ guest.id }}</td>
-            <td class="w-50">{{ guest.comment }}</td>
-            <td>{{ guest.user.username }}</td>
-            <td>{{ guest.approvalStatus ? 'Approved' : 'Pending' }}</td>
-            {# {% if is_granted('ROLE_ADMIN') %} #}
-            <td>
-                {% if  not guest.approvalStatus  %}
-                    <a class="btn btn-success" href='/guestbook/approve/{{ guest.id }}'>Approve</a>
-                {% endif %}
-            </td>
+                {# <td> {{ key+1 }}</td> #}
+                {# <td> <a href="{{ path('guestedit',{id: guest.id}) }}"> {{ guest.name }} </a></td> #}
+                <td>{{ guest.id }}</td>
+                <td class="w-50">{{ guest.comment }}</td>
+                <td>{{ guest.user.username }}</td>
+                <td>{{ guest.approvalStatus ? 'Approved' : 'Pending' }}</td>
+                {# {% if is_granted('ROLE_ADMIN') %} #}
+                <td>
+                    {% if  not guest.approvalStatus  %}
+                        <a class="btn btn-success" href='/guestbook/approve/{{ guest.id }}'>Approve</a>
+                    {% endif %}
+                </td>
 
-            <td>
-                <a class="btn btn-primary" href='/guestbook/edit/{{ guest.id }}'>Edit</a>
-                <a class="btn btn-danger" href='/guestbook/delete/{{ guest.id }}'>Delete</a>
-            </td>
-        </tr>
-       {% endfor %}
-        </tbody>
-    </table>
+                <td>
+                    <a class="btn btn-primary" href='/guestbook/edit/{{ guest.id }}'>Edit</a>
+                    <a class="btn btn-danger" href='/guestbook/delete/{{ guest.id }}'>Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+            </tbody>
+        </table>
+    </div>
     <div class="navigation">
         {{ knp_pagination_render(pagination) }}
     </div>
