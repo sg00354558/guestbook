@@ -15,8 +15,8 @@
 	 Create admin users and add few guestbook entries   
 	   - php bin/console doctrine:fixtures:load --append
 ## step 4
-	Run the program
-	   - symfony server:start -d
+	Run the program -- Access application on - http://127.0.0.1:8000/
+	   - symfony server:start -d 
 	Run PHPUnit
 	 -  php bin/phpunit
    
