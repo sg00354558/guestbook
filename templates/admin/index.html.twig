@@ -17,7 +17,7 @@
             Number of entries  : <b>{{ pagination.getTotalItemCount }}</b>
         </div>
         <div>
-            <a class="btn btn-success" href='/guestbook/create'>New</a>
+            <a class="btn btn-success" href='/admin/guestbook/create'>New</a>
         </div>
     </div>
     <hr class="bg-danger border-2 border-top border-success">
@@ -50,13 +50,13 @@
                 {# {% if is_granted('ROLE_ADMIN') %} #}
                 <td>
                     {% if  not guest.approvalStatus  %}
-                        <a class="btn btn-success" href='/guestbook/approve/{{ guest.id }}'>Approve</a>
+                        <a class="btn btn-success" href='/admin/guestbook/approve/{{ guest.id }}'>Approve</a>
                     {% endif %}
                 </td>
 
                 <td>
-                    <a class="btn btn-primary" href='/guestbook/edit/{{ guest.id }}'>Edit</a>
-                    <a class="btn btn-danger" href='/guestbook/delete/{{ guest.id }}'>Delete</a>
+                    <a class="btn btn-primary" href='/admin/guestbook/edit/{{ guest.id }}'>Edit</a>
+                    <a class="btn btn-danger" href='/admin/guestbook/delete/{{ guest.id }}'>Delete</a>
                 </td>
             </tr>
         {% endfor %}

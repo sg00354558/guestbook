@@ -64,7 +64,7 @@ class GuestbookController extends AbstractController
             $this->em->persist($newGuestbookEntry);
             $this->em->flush();
 
-            $this->addFlash('success', 'Entry Created Successfully');
+            $this->addFlash('success', 'Entry Created Successfully. Awaiting admin approval.');
             return $this->redirectToRoute('app_guestbook');
         }   
 
@@ -82,7 +82,7 @@ class GuestbookController extends AbstractController
     }
 
 
-    #[Route('/guestbook/create', methods:['get', 'post'], name: 'create_guestbook')]    
+    #[Route('/admin/guestbook/create', methods:['get', 'post'], name: 'create_guestbook')]    
     /**
      * create - add new guestbook entry
      *
@@ -118,7 +118,7 @@ class GuestbookController extends AbstractController
         ]);
     }
 
-    #[Route('/guestbook/delete/{id}', methods:['GET', 'DELETE'], name: 'remove_guestbook')]
+    #[Route('/admin/guestbook/delete/{id}', methods:['GET', 'DELETE'], name: 'remove_guestbook')]
     public function delete(Guestbook $guestBook) : Response 
     {
         $this->em->remove($guestBook);
@@ -128,7 +128,7 @@ class GuestbookController extends AbstractController
         return $this->redirectToRoute('app_admin');
     }
 
-    #[Route('/guestbook/approve/{id}', methods:['GET', 'PUT'], name: 'approve_guestbook_entry')]    
+    #[Route('/admin/guestbook/approve/{id}', methods:['GET', 'PUT'], name: 'approve_guestbook_entry')]    
     /**
      * approve - Set guestbook entry as approved i.e approvalStatus = 1
      *
@@ -142,7 +142,7 @@ class GuestbookController extends AbstractController
         return $this->redirectToRoute('app_admin');
     }
 
-    #[Route('/guestbook/edit/{id}', name: 'edit_guestbook')]
+    #[Route('/admin/guestbook/edit/{id}', name: 'edit_guestbook')]
     public function edit($id, Request $request) : Response 
     {
         $guestbook = $this->guestbookRepository->find($id);
