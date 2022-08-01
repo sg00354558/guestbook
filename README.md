@@ -26,22 +26,22 @@
 Home Page/ Index Page - Ref UI - https://www.wysiwygwebbuilder.com/support/bootstrapguestbook/guestbook.php
 ![image](https://user-images.githubusercontent.com/110300713/182086961-04f73f69-667e-4509-828e-16ec37064e04.png)
 
-`Register Screen
+Register Screen
 ![image](https://user-images.githubusercontent.com/110300713/182087117-dbfcdd82-fc76-4901-b569-40355d3ceb79.png)
 
-`Login Screen
+Login Screen
 ![image](https://user-images.githubusercontent.com/110300713/182087160-c77f3f5d-a89a-431c-aefb-459f0ab4fed1.png)
 
-`Post admin login Admin page - Username: admin Password: admin123
+Post admin login Admin page - Username: admin Password: admin123
 ![image](https://user-images.githubusercontent.com/110300713/182087374-45d359ef-1566-4aa0-be7d-2aa1f8e142c4.png)
 
-`Guestbook page post login
+Guestbook page post login
 ![image](https://user-images.githubusercontent.com/110300713/182087521-110df481-a8c3-4138-ac21-5d2d33b47d2a.png)
 
-`Approve guestbook entry
+Approve guestbook entry
 ![image](https://user-images.githubusercontent.com/110300713/182088361-da8f7be7-29c5-4122-8631-8c90e2077fb8.png)
 
-`Delete guestbook entry
+Delete guestbook entry
 ![image](https://user-images.githubusercontent.com/110300713/182088409-a07fa10d-cf3e-4f09-93c4-23281cb396da.png)
 
 
