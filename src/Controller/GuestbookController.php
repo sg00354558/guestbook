@@ -37,7 +37,7 @@ class GuestbookController extends AbstractController
         $this->guestbookService = $guestbookService;
     }
 
-    #[Route('/guestbook', name: 'app_guestbook')]    
+    #[Route('/', name: 'app_guestbook')]    
     /**
      * index Guestbook listing page
      *

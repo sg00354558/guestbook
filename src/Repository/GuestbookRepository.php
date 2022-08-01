@@ -62,14 +62,4 @@ class GuestbookRepository extends ServiceEntityRepository
     {
         return $this->findBy(array(), array('id' => 'DESC'));
     }
-
-    /**
-     * findAll orderby id desc
-     *
-     * @return void
-     */
-    public function findAllApproved()
-    {
-        return $this->findBy(array(), array('id' => 'DESC'));
-    }
 }

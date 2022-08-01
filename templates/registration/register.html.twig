@@ -19,12 +19,14 @@
                     {{ form_row(registrationForm.plainPassword, {
                         label: 'Password'
                     }) }}
-                    <div class="mb-5 mt-4">
+                    <div class="mb-3 mt-4">
                     {{ form_row(registrationForm.agreeTerms) }}
                     </div>
                     <div class="d-flex">
                         <button type="submit" class="btn btn-primary btn-lg">Register</button>
                     </div>
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a clss="text-decoration-none" href="/login"
+                class="link-success">Login</a></p>
                      {{ form_end(registrationForm) }}
 
               </div>
