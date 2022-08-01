@@ -42,9 +42,13 @@ Approve guestbook entry
 ![image](https://user-images.githubusercontent.com/110300713/182088361-da8f7be7-29c5-4122-8631-8c90e2077fb8.png)
 
 Delete guestbook entry
-![image](https://user-images.githubusercontent.com/110300713/182088409-a07fa10d-cf3e-4f09-93c4-23281cb396da.png)
+![image](https://user-images.githubusercontent.com/110300713/182099647-d9ae68a8-e4c0-4121-b905-c416121f4d6e.png)
 
+Guestbook entry added by admin is directly available on list page in approved status.
+![image](https://user-images.githubusercontent.com/110300713/182099952-d6494d7b-31d9-4210-ac64-8a1889323cd8.png)
 
+Edit guestbook entry. Only for admin.
+![image](https://user-images.githubusercontent.com/110300713/182100178-9407c26d-0584-4c1d-8125-ed0193ea2b5e.png)
 
 
 
