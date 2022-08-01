@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
                     <ul class="navbar-nav me-2">
                         <li class="nav-item my-lg-0">
-                            <a class="nav-link" href="{{ app.user ? 'logout' : 'login' }}">{{ app.user ? 'Logout' : 'Login' }}</a>
+                            <a class="nav-link" href="/{{ app.user ? 'logout' : 'login' }}">{{ app.user ? 'Logout' : 'Login' }}</a>
                         </li>
                         {% if not app.user %}
                         <li class="nav-item my-lg-0">
