@@ -6,9 +6,9 @@
 		-  download and install git    
 ## Step 2   
 		- Clone the Project - git clone https://github.com/sg00354558/guestbook.git
-		- Change directory to new guestbook directory and run composer install(composer will install all the dependencies)   
-		- open .env and add database connection and name.   
+		- Go inside guestbook foldr and open .env and add database connection and name.   
 		  DATABASE_URL="mysql://root:@localhost:3306/guestbook"
+		- Change directory to new guestbook directory and run composer install(composer will install all the dependencies)   
 		- run the command to create database php bin/console doctrine:database:create  
 		- php bin/console doctrine:schema:update --force
 ## Step 3     
